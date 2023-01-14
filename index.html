@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div id="head">
+        <h1>To-Do List</h1>
+        <img src="./to-do-list.png" alt="todoicon" id="todoicon">
+        </div>
+        <label for="todo">What is your To-do?</label>
+        <input type="text" name="todo" id="todo" placeholder="Type your task...">
+       <a href="#"><button class="btn" id="todobtn" onclick="addList()">Add to list</button></a>
+       <div class="list">
+        <h2>My tasks</h2>
+        <ul id="list"></ul>
+    </div>
+    </div>
+    <p id="myName">Coded by <a href="#">Anikó B. Asztalos-Barta</a></p> 
+</body>
+<script>
+    function addList(){
+        const input = document.getElementById("todo").value;
+
+        if(input === ""){
+            window.alert("You must write something!")
+        }else{
+            const list = document.getElementById("list");
+            const task = document.createElement("li");
+            const tasks = document.getElementsByClassName("tasks");
+            list.appendChild(task);
+            task.innerText = input;
+        }
+        document.getElementById("todo").value = "";
+        
+    }
+    let list = document.getElementById("list");
+        list.addEventListener("click", e =>{
+            if (e.target.tagName == "LI"){
+                e.target.classList.toggle("checked");
+            }
+        })
+</script>
+</html>
